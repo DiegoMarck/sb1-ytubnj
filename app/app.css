@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fab-button {
+    background-color: #007AFF;
+    margin: 16;
+    horizontal-align: right;
+    vertical-align: bottom;
+}

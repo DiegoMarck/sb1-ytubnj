@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="Réveil 2 Semaines" />
+    
+    <TabView selectedIndex="{{ selectedTabIndex }}">
+        <!-- Semaine 1 -->
+        <TabViewItem title="Semaine 1">
+            <ListView items="{{ weekOneAlarms }}" itemTap="{{ onAlarmTap }}">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" class="p-2">
+                        <StackLayout col="0">
+                            <Label text="{{ time }}" class="text-lg" />
+                            <Label text="{{ label }}" class="text-sm text-gray-500" />
+                        </StackLayout>
+                        <Switch col="1" checked="{{ isEnabled }}" tap="{{ toggleAlarm }}" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </TabViewItem>
+
+        <!-- Semaine 2 -->
+        <TabViewItem title="Semaine 2">
+            <ListView items="{{ weekTwoAlarms }}" itemTap="{{ onAlarmTap }}">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" class="p-2">
+                        <StackLayout col="0">
+                            <Label text="{{ time }}" class="text-lg" />
+                            <Label text="{{ label }}" class="text-sm text-gray-500" />
+                        </StackLayout>
+                        <Switch col="1" checked="{{ isEnabled }}" tap="{{ toggleAlarm }}" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </TabViewItem>
+    </TabView>
+
+    <FAB tap="{{ onAddAlarm }}" 
+         icon="res://ic_add" 
+         class="fab-button" />
+</Page>

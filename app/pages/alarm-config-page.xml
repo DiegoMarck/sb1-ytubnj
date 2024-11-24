@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Configuration du Réveil">
+        <NavigationButton text="Retour" android.systemIcon="ic_menu_back" />
+        <ActionItem tap="{{ saveAlarm }}" ios.position="right" android.position="actionBar">
+            <Label text="Sauvegarder" class="action-item" />
+        </ActionItem>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <TimePicker hour="{{ hour }}" minute="{{ minute }}" class="m-b-20" />
+            
+            <Label text="Semaine" class="text-lg font-bold m-b-10" />
+            <SegmentedBar selectedIndex="{{ weekNumber - 1 }}" class="m-b-20">
+                <SegmentedBar.items>
+                    <SegmentedBarItem title="Semaine 1" />
+                    <SegmentedBarItem title="Semaine 2" />
+                </SegmentedBar.items>
+            </SegmentedBar>
+
+            <Label text="Jours de la semaine" class="text-lg font-bold m-b-10" />
+            <Repeater items="{{ daysOfWeek }}">
+                <Repeater.itemTemplate>
+                    <GridLayout columns="*, auto" class="m-y-2">
+                        <Label text="{{ name }}" col="0" />
+                        <Switch checked="{{ isSelected }}" col="1" />
+                    </GridLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+
+            <Label text="Étiquette" class="text-lg font-bold m-t-20 m-b-10" />
+            <TextField text="{{ label }}" hint="Entrez une étiquette" class="m-b-20" />
+
+            <Label text="Son" class="text-lg font-bold m-b-10" />
+            <ListPicker items="{{ availableSounds }}" selectedIndex="{{ selectedSoundIndex }}" class="m-b-20" />
+
+            <Label text="Répétition (Snooze)" class="text-lg font-bold m-b-10" />
+            <GridLayout columns="*, auto" class="m-b-10">
+                <Label text="Intervalle (minutes)" col="0" />
+                <TextField text="{{ snoozeInterval }}" keyboardType="number" col="1" width="80" />
+            </GridLayout>
+            <GridLayout columns="*, auto" class="m-b-20">
+                <Label text="Nombre de répétitions" col="0" />
+                <TextField text="{{ snoozeCount }}" keyboardType="number" col="1" width="80" />
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
